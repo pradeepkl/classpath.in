@@ -6,12 +6,23 @@
   <title>AWS Serverless Workshop | Classpath Consulting</title>
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-  <meta name="description" content="Live 2-day, hands-on AWS Serverless workshop for developers. Build and deploy a real serverless app with IAM, S3, DynamoDB, Lambda, Step Functions & more." />
+  <meta name="description" content="Live 4-days, hands-on AWS Serverless workshop for developers. Build and deploy a real serverless app with IAM, S3, DynamoDB, Lambda, Step Functions & more." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/styles.css" />
   <script src="./assets/script.js" defer></script>
+  <script src="./assets/modal.js" defer></script>
+  <link rel="stylesheet" href="./assets/modal.css" />
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-FF9ZDH3E36"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FF9ZDH3E36');
+</script>
 <body>
 
  <div class="logo">
@@ -24,9 +35,9 @@
     <div class="hero__copy">
       <h1>AWS-Dev</h1>
       <p>Live, hands-on workshop. Build and deploy a real serverless app using IAM, S3, DynamoDB, Lambda, Step Functions & more.</p>
-        <a class="btn btn--outline" href="#">
+        <button id="openModal" class="btn btn--outline">
         Register Now | <span class="price-old">₹15,000</span> <span class="price-new">₹9,999 /-</span>
-        </a>
+        </button>
     </div>
     <div class="hero__media">
       <video autoplay muted loop playsinline>
@@ -161,6 +172,46 @@ I’m passionate about simplifying complex technologies and turning them into ha
   </div>
 </section>
 
+<!-- Registration Modal -->
+<div id="registrationModal" class="modal">
+  <div class="modal-content">
+    <button class="close">&times;</button>
+
+    <div class="form-card">
+      <h2>Workshop Registration</h2>
+      <form>
+        <div class="form-group">
+          <input type="text" placeholder="Full Name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Email" required>
+        </div>
+        <div class="phone-group">
+        <div class="phone-prefix">
+            <img src="https://files.codingninjas.com/flag-5-1732876121.webp" alt="India Flag" />
+            <span class="country-code">+91</span>
+        </div>
+        <input type="tel" id="phone" placeholder="Enter your phone number" maxlength="10" />
+        </div>
+        <div class="form-group">
+          <select>
+            <option value="">Current Role</option>
+            <option>Developer</option>
+            <option>Architect</option>
+            <option>QA</option>
+            <option>Manager</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea placeholder="Expectations from the workshop"></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Proceed to Payment</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
 <footer class="footer">
   <div class="container footer__grid">
     <!-- Left -->
@@ -172,9 +223,9 @@ I’m passionate about simplifying complex technologies and turning them into ha
 
     <!-- Right -->
     <div class="footer__links">
-      <a href="terms_and_conditions.html">Terms & Conditions</a><br />
-      <a href="refund_policy.html">Refund Policy</a><br />
-      <a href="privacy_policy.html">Privacy Policy</a>
+      <a href="#" id="openTerms">Terms & Conditions</a><br />
+      <a href="#" id="openRefund">Refund Policy</a><br />
+      <a href="#" id="openPrivacy">Privacy Policy</a>
     </div>
   </div>
 
@@ -185,7 +236,72 @@ I’m passionate about simplifying complex technologies and turning them into ha
 
   <button id="scrollTopBtn" class="scroll-top">↑</button>
 </footer>
+    <!-- Terms & Conditions Modal -->
+    <div id="termsModal" class="modal">
+    <div class="modal-content">
+        <button class="close">&times;</button>
+        <div class="form-card">
+        <h2>Terms and Conditions</h2>
+        <p>Welcome to Classpath Consulting. By accessing or using our website, courses, or services, you agree to the following terms and conditions.</p>
+        
+        <h3>1. Course Access</h3>
+        <p>Once registered, you will have access to the purchased course or workshop. Sharing access credentials is strictly prohibited.</p>
+        
+        <h3>2. Refund Policy</h3>
+        <p>Refunds are only applicable under the conditions stated on the course registration page. Please review before making payment.</p>
+        
+        <h3>3. Intellectual Property</h3>
+        <p>All course content, including videos, documents, and materials, is the intellectual property of Classpath Consulting and cannot be redistributed without permission.</p>
+        
+        <h3>4. Liability</h3>
+        <p>Classpath Consulting will not be liable for any damages arising from the use of our content or services.</p>
 
+        </div>
+    </div>
+    </div>
 
+    <!-- Refund Policy Modal -->
+    <div id="refundModal" class="modal">
+        <div class="modal-content">
+          <button class="close">&times;</button>
+          <div class="form-card">
+            <h2>Refund Policy</h2>
+            <p>We aim to provide the highest quality learning experience. Please read our refund policy carefully before making a purchase.</p>
+            <h3>1. Eligibility for Refund</h3>
+            <p>Refunds are available only under specific conditions mentioned at the time of registration. Once course materials are accessed or sessions are attended, refunds will not be processed.</p>
+            <h3>2. Timeframe</h3>
+            <p>All eligible refund requests must be raised within 7 days of purchase by contacting <a href="mailto:pradeep@classpath.in">pradeep@classpath.in</a>.</p>
+            <h3>3. Non-Refundable Items</h3>
+            <p>Payments for completed workshops, partially attended sessions, or downloadable materials are non-refundable.</p>
+            <h3>4. Exceptions</h3>
+            <p>In rare cases, exceptions may be made at the discretion of Classpath Consulting management.</p>
+            <h3>5. Contact</h3>
+            <p>For refund-related queries, please email us at <a href="mailto:pradeep@classpath.in">pradeep@classpath.in</a>.</p>
+          </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <button class="close">&times;</button>
+            <div class="form-card">
+                <h2>Privacy Policy</h2>
+                <p>Your privacy is important to us. This policy outlines how we handle your information.</p>
+                
+                <h3>1. Data Collection</h3>
+                <p>We collect personal information (name, email, phone) only for course registration and communication purposes.</p>
+                
+                <h3>2. Data Usage</h3>
+                <p>Your data will not be shared or sold to third parties. It is strictly used for delivering course updates and related communication.</p>
+                
+                <h3>3. Security</h3>
+                <p>We implement standard security measures to protect your personal information from unauthorized access.</p>
+                
+                <h3>4. Contact</h3>
+                <p>If you have any concerns about privacy, please contact us at <a href="mailto:pradeep@classpath.in">pradeep@classpath.in</a>.</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

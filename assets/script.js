@@ -1,6 +1,5 @@
 const logo = document.querySelector('.logo');
 window.addEventListener('scroll', () => {
-  console.log(window.scrollY); // test
   if (window.scrollY > 50) {
     logo.classList.add('hidden');
   } else {

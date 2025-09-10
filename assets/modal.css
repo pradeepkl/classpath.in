@@ -1,0 +1,239 @@
+/* =========================
+   Reset
+========================= */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* =========================
+   Registration Modal
+========================= */
+
+/* Overlay */
+.modal {
+  display: none;  /* keep it hidden */
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Modal container with animated gradient frame */
+.modal-content {
+  background: linear-gradient(135deg, #5c0dac, #2c058d, #d946ef, #ffb000);
+  background-size: 300% 300%;
+  animation: gradientShift 6s ease infinite;
+  padding: 6px;              /* thickness of gradient frame */
+  border-radius: 16px;
+  max-width: 480px;
+  width: 90%;
+  box-shadow: 0 0 25px rgba(92, 13, 172, 0.5);
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Inner white form card */
+.form-card {
+  background: #fff;
+  padding: 28px;
+  border-radius: 12px;
+  width: 100%;
+}
+
+/* Modal fade in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Gradient animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* =========================
+   Modal Close Button
+========================= */
+.close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: #f3f4f6;
+  color: #444;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.close:hover {
+  background: #e5e7eb;
+  color: #000;
+}
+
+/* =========================
+   Form Elements
+========================= */
+.form-card h2 {
+  font-size: 1.5em;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c058d;
+  letter-spacing: 0.5px;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95em;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.form-card input:focus,
+.form-card select:focus,
+.form-card textarea:focus {
+  outline: none;
+  border-color: #5c0dac;
+  box-shadow: 0 0 0 3px rgba(92, 13, 172, 0.1);
+}
+
+/* Textarea */
+.form-card textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Range slider */
+.slider-group {
+  margin: 18px 0;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+.range-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.range-wrapper input[type="range"] {
+  flex: 1;
+}
+.range-wrapper output {
+  font-weight: bold;
+  color: #5c0dac;
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: #eee;
+  margin: 20px 0;
+}
+
+/* Checkboxes */
+.checkbox-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 0.9em;
+}
+.checkboxes label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9em;
+}
+
+/* =========================
+   Buttons
+========================= */
+.btn-primary {
+  width: 100%;
+  background: linear-gradient(135deg, #2c89ff, #385cff);
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #1d6fe2, #2549d7);
+}
+
+/* =========================
+   Phone Input (intl-tel-input)
+========================= */
+.iti {
+  width: 100%;
+  margin-bottom: 16px; /* gap below phone field */
+}
+.iti input {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 0.95em;
+}
+
+.phone-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  background: #fff;
+}
+
+.phone-prefix {
+  display: flex;
+  align-items: center;
+  background: #f9fafb;
+  padding: 0 10px;
+  gap: 6px;
+  border-right: 1px solid #ddd;
+}
+
+.phone-prefix img {
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+  aspect-ratio: auto 24 /24;
+}
+
+.phone-prefix .country-code {
+  font-size: 0.95em;
+  font-weight: 500;
+  color: #333;
+}
+
+#phone {
+  flex: 1;
+  border: none;
+  padding: 12px;
+  font-size: 0.95em;
+  outline: none;
+}
+
+
