@@ -506,6 +506,31 @@ p  { margin:0 0 14px; color:var(--sub); }
   box-sizing: border-box;
 }
 
+/* Style the dropdown itself */
+.form-card select {
+  background: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 0.95em;
+  appearance: none;   /* removes browser default arrow styling */
+  cursor: pointer;
+}
+
+/* Style the dropdown options */
+.form-card select option {
+  background: #fff;    /* white background instead of grey */
+  color: #333;         /* text color */
+  padding: 10px;
+}
+
+/* Hover effect for options */
+.form-card select option:hover {
+  background: #f3f4f6; /* light gray */
+  color: #2c058d;      /* your brand purple */
+  cursor: pointer;}
+
 /* Range + output alignment */
 .form-group input[type="range"] {
   margin-top: 8px;
