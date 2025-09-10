@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boarding Pass Receipt</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f6f7f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .ticket {
+      width: 1000px;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      border: 2px solid #f59e0b;
+      position: relative;
+    }
+
+    /* Orange header */
+    .ticket-header {
+      background: #f59e0b;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 20px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      letter-spacing: 0.5px;
+    }
+
+    .ticket-body {
+      display: flex;
+      justify-content: space-between;
+      padding: 30px 20px;
+      border-top: 2px dashed #d1d5db;
+      position: relative;
+    }
+
+    .col {
+      flex: 1;
+      padding: 0 15px;
+      position: relative;
+    }
+
+    /* Dashed dividers */
+    .col:not(:last-child) {
+      border-right: 2px dashed #d1d5db;
+    }
+
+    /* U-cut notches */
+    .col:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -13px;
+      width: 26px;
+      height: 26px;
+      background: #f6f7f9;
+      border-radius: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
+
+    .field {
+      margin: 12px 0;
+      font-size: 0.95rem;
+    }
+
+    .field strong {
+      display: block;
+      font-weight: 600;
+      color: #111827;
+      font-size: 0.85rem;
+      margin-bottom: 2px;
+    }
+
+    .highlight {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #111827;
+    }
+
+    /* Footer with barcode */
+    .ticket-footer {
+      border-top: 2px dashed #d1d5db;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      background: #fef3c7;
+      position: relative;
+    }
+
+    .barcode {
+      width: 80%;
+      height: 70px;
+      background: repeating-linear-gradient(
+        90deg,
+        #000,
+        #000 3px,
+        #fff 3px,
+        #fff 7px
+      );
+    }
+
+    /* U-cuts on footer */
+    .ticket-footer::before,
+    .ticket-footer::after {
+      content: "";
+      position: absolute;
+      top: -13px;
+      width: 26px;
+      height: 26px;
+      background: #f6f7f9;
+      border-radius: 50%;
+    }
+    .ticket-footer::before { left: -13px; }
+    .ticket-footer::after { right: -13px; }
+  </style>
+</head>
+<body>
+  <div class="ticket">
+    <div class="ticket-header">
+      <span>AWS Dev Workshop</span>
+      <span>Payment Receipt</span>
+    </div>
+
+    <div class="ticket-body">
+      <!-- Column 1 -->
+      <div class="col">
+        <div class="field"><strong>Customer</strong> <span id="custName">Pradeep Kumar</span></div>
+        <div class="field"><strong>Email</strong> <span id="custEmail">pradeep@example.com</span></div>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="col">
+        <div class="field"><strong>Phone</strong> <span id="custPhone">+91 9999999999</span></div>
+        <div class="field"><strong>Date</strong> <span id="paymentDate">09-09-2025</span></div>
+      </div>
+
+      <!-- Column 3 -->
+      <div class="col">
+        <div class="field"><strong>Product</strong> AWS Workshop Ticket</div>
+        <div class="field"><strong>Total Paid</strong> <span class="highlight">₹2,999</span></div>
+        <div class="field"><strong>Payment ID</strong> <span id="paymentId">pay_xxxxxx</span></div>
+      </div>
+    </div>
+
+    <div class="ticket-footer">
+      <div class="barcode"></div>
+    </div>
+  </div>
+
+  <script>
+    // Example: Replace with Razorpay response
+    document.getElementById("custName").textContent = "Pradeep Kumar";
+    document.getElementById("custEmail").textContent = "pradeep@example.com";
+    document.getElementById("custPhone").textContent = "+91 9999999999";
+    document.getElementById("paymentId").textContent = "pay_KlvkTt7abcd123";
+    document.getElementById("paymentDate").textContent = new Date().toLocaleDateString();
+  </script>
+</body>
+</html>

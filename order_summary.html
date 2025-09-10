@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Summary | Classpath</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    .order-container {
+      max-width: 600px;
+      margin: 3rem auto;
+      padding: 2rem;
+      border: 1px solid #eaeaea;
+      border-radius: 12px;
+      background: var(--accent, #f9fafb);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .order-header {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: var(--brand, #5c0dac);
+      text-align: center;
+    }
+    .order-form label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+    .order-form input {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .order-summary {
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+    }
+    .pay-btn {
+      display: block;
+      width: 100%;
+      margin-top: 2rem;
+      padding: 1rem;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #fff;
+      background: var(--brand, #5c0dac);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .pay-btn:hover {
+      background: #4a0a99;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="order-container">
+    <div class="order-header">Order Summary</div>
+
+    <div class="order-summary">
+      <p><strong>Product:</strong> AWS Workshop Ticket</p>
+      <p><strong>Price:</strong> ₹2,999</p>
+      <p><strong>Qty:</strong> 1</p>
+      <p><strong>Total:</strong> ₹2,999</p>
+    </div>
+
+    <form id="orderForm" class="order-form">
+      <label>Name</label>
+      <input type="text" id="custName" required>
+      
+      <label>Email</label>
+      <input type="email" id="custEmail" required>
+      
+      <label>Phone</label>
+      <input type="tel" id="custPhone" required>
+      
+      <button type="submit" class="pay-btn">Proceed to Payment</button>
+    </form>
+  </div>
+
+  <!-- Razorpay Checkout -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    document.getElementById("orderForm").onsubmit = function(e) {
+      e.preventDefault();
+
+      var options = {
+        key: "YOUR_RAZORPAY_KEY_ID", // replace with live key
+        amount: 299900, // paise (₹2999)
+        currency: "INR",
+        name: "Classpath",
+        description: "AWS Workshop Ticket",
+        image: "/favicon.ico",
+        handler: function (response) {
+          alert("Payment successful! ID: " + response.razorpay_payment_id);
+          // 🔑 Ideally: verify payment with backend
+        },
+        prefill: {
+          name: document.getElementById("custName").value,
+          email: document.getElementById("custEmail").value,
+          contact: document.getElementById("custPhone").value,
+        },
+        theme: {
+          color: "#5c0dac"
+        }
+      };
+
+      var rzp = new Razorpay(options);
+      rzp.open();
+    };
+  </script>
+</body>
+</html>

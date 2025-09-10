@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="174" viewBox="0 0 100 174">
+  <g fill="none" stroke="#00b4ff" stroke-width="2" opacity="0.4">
+    <polygon points="50,1 99,25 99,75 50,99 1,75 1,25"/>
+    <polygon points="50,99 99,123 99,173 50,197 1,173 1,123"/>
+    <polygon points="50,-97 99,-73 99,-23 50,1 1,-23 1,-73"/>
+  </g>
+</svg>
