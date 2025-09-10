@@ -53,18 +53,74 @@ p  { margin:0 0 14px; color:var(--sub); }
 /* =========================
    Buttons
 ========================= */
-.btn {
-  display:inline-block;
-  border-radius:9999px;
-  padding:14px 32px;
-  font-weight:700;
-  text-decoration:none;
-  transition:.2s;
-}
-.btn--primary { background:var(--cta); color:#231f00; box-shadow:var(--shadow); }
-.btn--primary:hover { transform:translateY(-2px); }
-.btn--light { background:var(--white); color:var(--text); border:1px solid #e5e7eb; }
 
+/* Gradient outline pill button */
+.btn--outline {
+  position: relative;
+  display: inline-block;
+  padding: 18px 40px;
+  text-decoration: none;
+  border-radius: 9999px;
+  background: transparent;
+  color: #fff; /* fallback text color */
+  z-index: 1;
+  font-size: 1.1em;
+  letter-spacing: 1px;
+}
+/* Use pseudo-element for gradient border */
+.btn--outline::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  padding: 2px; /* border thickness */
+  background: linear-gradient(90deg, #ff4e50, #ff6ec7); /* default gradient */
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude; /* ensures only border shows */
+  z-index: -1;
+}
+
+/* Hover → new gradient */
+.btn--outline:hover::before {
+  background: linear-gradient(90deg, #00c6ff, #0072ff); /* hover gradient */
+}
+
+.btn--outline:hover {
+  color: #fff; /* match hover gradient end color for nice effect */
+  font-weight: 600;
+  background-color: var(--brand);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transform: translateY(-2px) scale(1.02);
+  transition: all 0.3s ease;
+  
+}
+
+/* Bigger "Register Now" text */
+.cta-text {
+  font-size: 1.4em;   /* bump size slightly */
+  margin-right: 8px;
+}
+
+/* Old Price */
+.price-old {
+  text-decoration: line-through;
+  color: #d1d5db;   /* light gray */
+  margin: 0 6px;
+  font-weight: 500;
+  font-size: 1.1em; /* slightly smaller to de-emphasize */
+  opacity: 0.8;      /* softer look */
+}
+
+/* New Price */
+.price-new {
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+  
 /* =========================
    Hero
 ========================= */
@@ -105,6 +161,9 @@ p  { margin:0 0 14px; color:var(--sub); }
 }
 .hero h1 { font-size:clamp(36px,6vw,64px); font-weight:400; line-height:1.1; }
 .hero p  { font-size:clamp(18px,2.5vw,22px); }
+
+
+
 
 /* =========================
    Tapered Section Utility
@@ -351,7 +410,7 @@ p  { margin:0 0 14px; color:var(--sub); }
   position: relative;
   margin: 0;                /* remove extra gap */
   padding: 80px 0;
-  background-color: #ffc600; 
+  background: linear-gradient(135deg,#5c0dac,#d946ef); 
   color: #fff;
   text-align: center;
   /* remove diagonal cuts */
@@ -359,10 +418,10 @@ p  { margin:0 0 14px; color:var(--sub); }
 }
 .section--accent h2 {
   font-size: 32px;
-  margin-bottom: 20px;
+  margin-bottom: 28px;
   color: #fff;
   text-decoration: underline;
-  text-decoration-color: var(--brand);
+  text-decoration-color: #ffc600;
   text-decoration-thickness: 4px;
   text-underline-offset: 12px;
 }
