@@ -1,10 +1,12 @@
 // Registration modal (main one)
 const modal = document.getElementById("registrationModal");
 const openBtn = document.getElementById("openModal");
+const openBtn2 = document.getElementById("openModal2");
 const closeBtn = document.querySelector(".close");
 
-if (modal && openBtn && closeBtn) {
+if (modal && openBtn && closeBtn && openBtn2) {
   openBtn.onclick = () => { modal.style.display = "flex"; };
+  openBtn2.onclick = () => { modal.style.display = "flex"; };
   closeBtn.onclick = () => { modal.style.display = "none"; };
   window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; };
 
